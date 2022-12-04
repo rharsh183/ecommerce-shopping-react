@@ -6,9 +6,9 @@ import "./Checkout.css";
 const Checkout = () => {
   const { cart, orders, addItemToOrderList, clearCart } =
     useContext(GlobalContext);
-  const { discount, extraFees, tax } = { discount: 20, extraFees: 99, tax: 5 };
+  const { discount, shippingCharges, tax } = { discount: 20, shippingCharges: 15, tax: 5 };
   const subTotal = Math.floor(cart?.reduce((sum, curr) => sum + curr.price, 0));
-  const total = Math.floor(subTotal + 99 + 5 - (subTotal + 99 + 5) * 0.2);
+  const total = Math.floor(subTotal + 15 + 5 - (subTotal + 15 + 5) * 0.2);
   const [isOrdered, setIsOrdered] = useState(false);
   const handlePay = () => {
     addItemToOrderList({
@@ -47,16 +47,16 @@ const Checkout = () => {
                 <span>${subTotal}</span>
               </div>
               <div className="checkout-summary">
-                <span>Discount</span>
-                <span>{discount}%</span>
-              </div>
-              <div className="checkout-summary">
-                <span>Extra Fee</span>
-                <span>${extraFees}</span>
+                <span>Shipping Charges</span>
+                <span>${shippingCharges}</span>
               </div>
               <div className="checkout-summary">
                 <span>Tax</span>
                 <span>${tax}</span>
+              </div>
+              <div className="checkout-summary">
+                <span>Discount</span>
+                <span>{discount}%</span>
               </div>
             </div>
             <div className="custom-row">
