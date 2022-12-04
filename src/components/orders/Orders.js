@@ -1,7 +1,7 @@
-import React, { useContext, useState } from "react";
+import { useContext } from "react";
 import { GlobalContext } from "../../context/GlobalState";
 
-function Orders() {
+const Orders = function Orders() {
   const { orders } = useContext(GlobalContext);
   return (
     <div className="cart-list">
